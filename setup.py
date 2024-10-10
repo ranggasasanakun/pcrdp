@@ -8,7 +8,7 @@ actions = [
     (266, 287, 4),  # unattended access
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
-    (365, 220, 1),  # Allow rdp
+    (365, 220, 1),  # allow rdp
     (667, 567, 4),  # finish
     (447, 286, 4),  # ss id & upload (launch iperius)
 ]

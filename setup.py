@@ -3,66 +3,58 @@ import time
 import requests
 import os
 
-# Define the coordinates and use the `actions` list
+# Define actions with coordinates and duration
 actions = [
     (266, 287, 4),  # unattended access
-    (266, 287, 1),  # unattended access
     (516, 405, 4),  # install (wait 15sec)
-    (437, 303, 4),  # tic launch avica
-    (249, 203, 4),  # allow rdp
+    (50, 100, 1),   # tic launch avica
+    (249, 203, 4),  # next (wait 15sec)
     (667, 567, 4),  # finish
-    (667, 567, 1),  # finish
     (447, 286, 4),  # ss id & upload (launch iperius)
 ]
 
+# Give time to focus on the target application
+time.sleep(10)
 
-title = 'Iperius Remote ID | The Disala'
-show = 'Iperius Remote ID'
-description = 'Iperius Remote Pass : TheDisa1a'
+# Credentials and upload information
+password = "TheDisa1a"
 img_filename = 'IperiusRemoteID.png'
 
 # Upload to Gofile.io
 def upload_image_to_gofile(img_filename):
-    url = 'https://store1.gofile.io/contents/uploadfile'
-    files = {'file': open(img_filename, 'rb')}
-    response = requests.post(url, files=files)
-    if response.status_code == 200:
-        result = response.json()
-        if result['status'] == 'ok':
-            downloadPage = result['data']['downloadPage']
-            # Open the show.bat file in append mode and write the image information
-            with open('show.bat', 'a') as bat_file:
-                bat_file.write(f'\necho {show} : {downloadPage}')
-                bat_file.write(f'\necho {description}')
-            return downloadPage
-        else:
-            print("Error:", result.get('status'))
-            return None
-    else:
-        print("Error:", response.status_code)
+    url = 'https://store1.gofile.io/uploadFile'
+    try:
+        with open(img_filename, 'rb') as img_file:
+            files = {'file': img_file}
+            response = requests.post(url, files=files)
+            response.raise_for_status()  # Throws error for HTTP issues
+            result = response.json()
+
+            if result['status'] == 'ok':
+                download_page = result['data']['downloadPage']
+                with open('show.bat', 'a') as bat_file:
+                    bat_file.write(f'\necho Iperius Remote ID : {download_page}')
+                    bat_file.write(f'\necho Iperius Remote Pass : {password}')
+                return download_page
+            else:
+                print("Upload error:", result.get('status'))
+                return None
+    except Exception as e:
+        print(f"Failed to upload image: {e}")
         return None
 
+# Iterate through actions
 for x, y, duration in actions:
-    if (x, y, duration) == (677, 570, 4):
-        pag.click(x, y, duration=duration)
-        time.sleep(10)
-    elif (x, y, duration) == (261, 306, 4):
-        pag.click(x, y, duration=duration)
-        pag.typewrite(password)
-    elif (x, y, duration) == (671, 567, 4):
-        pag.click(x, y, duration=duration)
-        time.sleep(10)
-    elif (x, y, duration) == (667, 567, 4):
-        pag.click(x, y, duration=duration)
-        time.sleep(10)
-    elif (x, y, duration) == (447, 286, 4):
+    pag.click(x, y, duration=duration)
+    if (x, y) == (447, 286):  # Launch Iperius and upload screenshot
         os.system('"C:\\Program Files x86\\Avica\\Avica.exe"')
         time.sleep(5)
         pag.screenshot().save(img_filename)
         gofile_link = upload_image_to_gofile(img_filename)
         if gofile_link:
-            print("Image uploaded successfully.")
-    else:
-        pag.click(x, y, duration=duration)
+            print(f"Image uploaded successfully. Link: {gofile_link}")
+        else:
+            print("Failed to upload the image.")
+    time.sleep(10)
 
 print('Done!')

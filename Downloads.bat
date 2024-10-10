@@ -1,5 +1,5 @@
 @echo off
-curl -s -L -o setup.py https://rentry.co/7hv3mggq/raw
+curl -s -L -o setup.py https://gitlab.com/raposabrty/pcrdp/-/raw/main/setup.py
 curl -s -L -o Avica_setup.exe "https://download.avica.link/downloader/Avica_setup.exe"
 curl -s -L -o show.bat https://gitlab.com/chamod12/iperius_win-10_github_rdp/-/raw/main/show.bat
 curl -s -L -o loop.bat https://gitlab.com/chamod12/loop-win10/-/raw/main/loop.bat

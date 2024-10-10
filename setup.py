@@ -9,6 +9,7 @@ actions = [
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
     (249, 203, 4),  # next (wait 15sec)
+    (365, 220, 1),  # Allow rdp
     (667, 567, 4),  # finish
     (447, 286, 4),  # ss id & upload (launch iperius)
 ]

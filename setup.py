@@ -9,6 +9,7 @@ actions = [
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
     (249, 203, 1),  # allow rdp
+    (447, 286, 4),  # ss id & upload (launch iperius)
 ]
 
 # Give time to focus on the target application

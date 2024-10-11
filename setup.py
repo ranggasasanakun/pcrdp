@@ -8,14 +8,17 @@ actions = [
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
     (249, 203, 4),  # allow rdp
-    (447, 286, 4),  # ss id & upload (launch iperius)
+    (557, 139, 4),  # button change password
+    (443, 141, 4),  # click to change password
+    (558, 139, 4),  # Confirm Password
+    (447, 286, 4),  # ss id & upload (launch avica)
 ]
 
 # Give time to focus on the target application
 time.sleep(10)
 
 # Credentials and upload information
-password = "TheDisa1a"
+new_password = "1234567"  # The new password you want to type
 img_filename = 'IperiusRemoteID.png'
 
 # Upload to Gofile.io
@@ -31,8 +34,8 @@ def upload_image_to_gofile(img_filename):
             if result['status'] == 'ok':
                 download_page = result['data']['downloadPage']
                 with open('show.bat', 'a') as bat_file:
-                    bat_file.write(f'\necho Iperius Remote ID : {download_page}')
-                    bat_file.write(f'\necho Iperius Remote Pass : {password}')
+                    bat_file.write(f'\necho Avica Remote ID : {download_page}')
+                    bat_file.write(f'\necho Avica Remote Pass : {new_password}')
                 return download_page
             else:
                 print("Upload error:", result.get('status'))
@@ -44,7 +47,14 @@ def upload_image_to_gofile(img_filename):
 # Iterate through actions
 for x, y, duration in actions:
     pag.click(x, y, duration=duration)
-    if (x, y) == (447, 286):  # Launch Iperius and upload screenshot
+    
+    # After clicking on the 'change password' field (443, 141), type the new password
+    if (x, y) == (443, 141):
+        time.sleep(2)  # Wait a bit before typing
+        pag.write(new_password, interval=0.1)  # Type the new password "1234567"
+    
+    # Launch Avica and upload screenshot
+    if (x, y) == (447, 286):  
         os.system('"C:\\Program Files x86\\Avica\\Avica.exe"')
         time.sleep(5)
         pag.screenshot().save(img_filename)
@@ -53,6 +63,7 @@ for x, y, duration in actions:
             print(f"Image uploaded successfully. Link: {gofile_link}")
         else:
             print("Failed to upload the image.")
+    
     time.sleep(10)
 
 print('Done!')

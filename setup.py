@@ -8,9 +8,6 @@ actions = [
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
     (249, 203, 4),  # allow rdp
-    (557, 139, 4),  # button change password
-    (443, 141, 4),  # click to change password
-    (558, 139, 4),  # Confirm Password
     (447, 286, 4),  # ss id & upload (launch avica)
 ]
 

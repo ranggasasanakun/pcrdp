@@ -8,6 +8,9 @@ actions = [
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
     (249, 203, 4),  # allow rdp
+    (249, 203, 4),  # allow rdp 2
+    (249, 203, 4),  # allow rdp 3
+    (249, 203, 4),  # allow rdp 4
     (447, 286, 4),  # ss id & upload (launch avica)
 ]
 

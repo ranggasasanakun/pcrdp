@@ -18,7 +18,6 @@ actions = [
 time.sleep(10)
 
 # Credentials and upload information
-password = "TheDisa1a"
 img_filename = 'AvicaRemoteID.png'
 
 # Upload to Gofile.io
@@ -46,9 +45,10 @@ def upload_image_to_gofile(img_filename):
 # Iterate through actions
 for x, y, duration in actions:
     pag.click(x, y, duration=duration)
-    if (x, y) == (447, 286):  # Launch avica and upload screenshot
+    if (x, y) == (447, 286):  # Launch Avica and upload screenshot
         os.system('"C:\\Program Files x86\\Avica\\Avica.exe"')
-        time.sleep(5)
+        time.sleep(5)  # Give some time for the app to launch
+        time.sleep(10)  # Extra 10 seconds delay before taking the screenshot
         pag.screenshot().save(img_filename)
         gofile_link = upload_image_to_gofile(img_filename)
         if gofile_link:

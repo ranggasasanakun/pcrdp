@@ -19,7 +19,7 @@ time.sleep(10)
 
 # Credentials and upload information
 password = "TheDisa1a"
-img_filename = 'IperiusRemoteID.png'
+img_filename = 'AvicaRemoteID.png'
 
 # Upload to Gofile.io
 def upload_image_to_gofile(img_filename):

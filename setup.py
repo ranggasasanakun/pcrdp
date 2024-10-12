@@ -18,11 +18,12 @@ actions = [
 time.sleep(10)
 
 # Credentials and upload information
-img_filename = 'AvicaRemoteID.png'
+password = "TheDisa1a"
+img_filename = 'IperiusRemoteID.png'
 
 # Upload to Gofile.io
 def upload_image_to_gofile(img_filename):
-    url = 'https://store1.gofile.io/uploadFile'
+    url = 'https://api.gofile.io/uploadFile'
     try:
         with open(img_filename, 'rb') as img_file:
             files = {'file': img_file}
@@ -33,9 +34,7 @@ def upload_image_to_gofile(img_filename):
             if result['status'] == 'ok':
                 download_page = result['data']['downloadPage']
                 with open('show.bat', 'a') as bat_file:
-                    bat_file.write(f'\necho Avica Remote ID And Password: {download_page}')
-                    bat_file.write(f'\necho By abelha7w7')
-                    bat_file.write(f'\necho Made by a Brazilian 🇧🇷')
+                    bat_file.write(f'\necho Avica Remote ID : {download_page}')
                 return download_page
             else:
                 print("Upload error:", result.get('status'))
@@ -43,9 +42,11 @@ def upload_image_to_gofile(img_filename):
     except Exception as e:
         print(f"Failed to upload image: {e}")
         return None
-    
-    # Launch Avica and upload screenshot
-    if (x, y) == (447, 286):  
+
+# Iterate through actions
+for x, y, duration in actions:
+    pag.click(x, y, duration=duration)
+    if (x, y) == (447, 286):  # Launch avica and upload screenshot
         os.system('"C:\\Program Files x86\\Avica\\Avica.exe"')
         time.sleep(5)
         pag.screenshot().save(img_filename)
@@ -54,7 +55,6 @@ def upload_image_to_gofile(img_filename):
             print(f"Image uploaded successfully. Link: {gofile_link}")
         else:
             print("Failed to upload the image.")
-    
     time.sleep(10)
 
 print('Done!')

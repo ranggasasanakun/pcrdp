@@ -18,8 +18,7 @@ actions = [
 time.sleep(10)
 
 # Credentials and upload information
-new_password = "1234567"  # The new password you want to type
-img_filename = 'IperiusRemoteID.png'
+img_filename = 'AvicaRemoteID.png'
 
 # Upload to Gofile.io
 def upload_image_to_gofile(img_filename):
@@ -34,8 +33,8 @@ def upload_image_to_gofile(img_filename):
             if result['status'] == 'ok':
                 download_page = result['data']['downloadPage']
                 with open('show.bat', 'a') as bat_file:
-                    bat_file.write(f'\necho Avica Remote ID : {download_page}')
-                    bat_file.write(f'\necho Avica Remote Pass : {new_password}')
+                    bat_file.write(f'\necho Avica Remote ID And Password: {download_page}')
+                    bat_file.write(f'\necho By abelha7w7 or gusta7w7')
                 return download_page
             else:
                 print("Upload error:", result.get('status'))
@@ -43,15 +42,6 @@ def upload_image_to_gofile(img_filename):
     except Exception as e:
         print(f"Failed to upload image: {e}")
         return None
-
-# Iterate through actions
-for x, y, duration in actions:
-    pag.click(x, y, duration=duration)
-    
-    # After clicking on the 'change password' field (443, 141), type the new password
-    if (x, y) == (443, 141):
-        time.sleep(2)  # Wait a bit before typing
-        pag.write(new_password, interval=0.1)  # Type the new password "1234567"
     
     # Launch Avica and upload screenshot
     if (x, y) == (447, 286):  

@@ -34,7 +34,8 @@ def upload_image_to_gofile(img_filename):
                 download_page = result['data']['downloadPage']
                 with open('show.bat', 'a') as bat_file:
                     bat_file.write(f'\necho Avica Remote ID And Password: {download_page}')
-                    bat_file.write(f'\necho By abelha7w7 or gusta7w7')
+                    bat_file.write(f'\necho By abelha7w7')
+                    bat_file.write(f'\necho Made by a Brazilian 🇧🇷')
                 return download_page
             else:
                 print("Upload error:", result.get('status'))

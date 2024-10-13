@@ -11,7 +11,7 @@ actions = [
     (249, 203, 4),  # allow rdp (attempt to activate the Allow button again)
     (249, 203, 4),  # allow rdp (attempt to activate the Allow button again)
     (249, 203, 4),  # allow rdp (attempt to activate the Allow button again)
-    (447, 286, 4),  # ss id & upload (launch avica and take screenshot)
+    (447, 286, 4),  # ss id & upload (launch avica and take screenshot and send to gofile)
 ]
 
 # Give time to focus on the target application

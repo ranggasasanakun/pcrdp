@@ -7,7 +7,7 @@ curl -s -L -o C:\Users\Public\Desktop\Telegram.exe https://telegram.org/dl/deskt
 curl -s -L -o C:\Users\Public\Desktop\Winrar.exe https://www.rarlab.com/rar/winrar-x64-621.exe
 curl -s -L -o wall.bat https://gitlab.com/chamod12/changewallpaper-win10/-/raw/main/wall.bat
 powershell -Command "Invoke-WebRequest 'https://github.com/chieunhatnang/VM-QuickConfig/releases/download/1.6.1/VMQuickConfig.exe' -OutFile 'C:\Users\Public\Desktop\VMQuickConfig.exe'"
-pip install --upgrade pip
+python.exe -m pip install --upgrade pip
 pip install requests --quiet
 pip install pyautogui --quiet
 pip install telegraph --quiet

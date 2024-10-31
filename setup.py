@@ -7,6 +7,7 @@ import os
 actions = [
     (516, 405, 4),  # install (wait 15sec)
     (50, 100, 1),   # tic launch avica
+    (496, 438, 4), # Later Update
     (249, 203, 4),  # allow rdp (attempt to activate the Allow button)
     (249, 203, 4),  # allow rdp (attempt to activate the Allow button again)
     (249, 203, 4),  # allow rdp (attempt to activate the Allow button again)

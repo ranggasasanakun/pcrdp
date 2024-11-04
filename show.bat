@@ -12,7 +12,7 @@ echo Corrected Once Again Thanks to the People Who Reported It Oh and Just a War
 echo ㅤ
 echo *And That Brazilian Doesn't Take Defiance Home.*
 echo ㅤ
-echo: #AntiXenophobia
+echo #AntiXenophobia
 
 
 echo User name : runneradmin
